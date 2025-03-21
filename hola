@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Divertido</title>
+</head>
+<body>
+    <h1>Descubre qué personaje de anime eres</h1>
+    <p>Para comenzar el test, activa tu cámara para analizar tu rostro.</p>
+    <button onclick="activarCamara()">Iniciar Test</button>
+    <video id="video" width="640" height="480" autoplay style="display:none;"></video>
+
+    <script>
+        function activarCamara() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    document.getElementById('video').srcObject = stream;
+                    document.getElementById('video').style.display = "block";
+                })
+                .catch(error => {
+                    alert('No se pudo acceder a la cámara');
+                    console.error(error);
+                });
+        }
+    </script>
+</body>
+</html>
